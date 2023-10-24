@@ -1,17 +1,15 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Footer from "./_components/footer";
+import Heading from "./_components/heading";
+import Heroes from "./_components/heroes";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Notion clone</h1>
-      <p>
-        <Link href="/test">
-          <Button variant="default" size="sm">
-            Send the ping
-          </Button>
-        </Link>
-      </p>
-    </main>
+    <div className="min-h-full flex flex-col">
+      <div className="flex flex-col items-center justify-center md:justify-start text-center pag-y-8 px-6 pb-10">
+        <Heading />
+        <Heroes />
+      </div>
+      <Footer />
+    </div>
   );
 }
