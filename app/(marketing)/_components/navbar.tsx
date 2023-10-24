@@ -1,7 +1,7 @@
 "use client"
 
 import { useConvexAuth } from "convex/react";
-import { SignInButton } from "@clerk/clerk-react";
+import { SignInButton, UserButton } from "@clerk/clerk-react";
 
 import { cn } from "@/lib/utils";
 import useScrollTop from "@/hooks/use-scroll-top";
@@ -9,6 +9,7 @@ import Logo from "./logo";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/spinner";
+import Link from "next/link";
 
 const Navbar = () => {
   const scrolled = useScrollTop();
@@ -36,7 +37,16 @@ const Navbar = () => {
             </SignInButton>
           </>
         )}
-
+        { isAuthenticated && !isLoading && (
+          <>
+            <Button variant="ghost" size="sm">
+              <Link href="/documents">
+                Enter Pation
+              </Link>
+            </Button>
+            <UserButton afterSignOutUrl="/" />
+          </>
+        )}
         {/* Toggle theme mode button */}
         <ModeToggle />
       </div>
