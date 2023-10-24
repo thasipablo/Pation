@@ -22,11 +22,18 @@ const Navbar = () => {
           <p>loading...</p>
         )}
         { !isAuthenticated && !isLoading && (
-          <SignInButton mode="modal">
-            <Button variant="ghost" size="sm">
-              Sign In
-            </Button>
-          </SignInButton>
+          <>
+            <SignInButton mode="modal">
+              <Button variant="ghost" size="sm">
+                Sign In
+              </Button>
+            </SignInButton>
+            <SignInButton mode="modal">
+              <Button size="sm">
+                Get Passion for free
+              </Button>
+            </SignInButton>
+          </>
         )}
 
         {/* Toggle theme mode button */}
