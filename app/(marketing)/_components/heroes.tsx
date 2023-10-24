@@ -8,7 +8,13 @@ const Heroes = () => {
           <Image
             src="/documents.png"
             fill
-            className="object-contain"
+            className="dark:hidden object-contain"
+            alt="Document"
+          />
+          <Image
+            src="/documents-dark.png"
+            fill
+            className="hidden dark:block object-contain"
             alt="Document"
           />
         </div>
@@ -16,7 +22,13 @@ const Heroes = () => {
           <Image
             src="/reading.png"
             fill
-            className="object-contain"
+            className="dark:hidden object-contain"
+            alt="Reading"
+          />
+          <Image
+            src="/reading-dark.png"
+            fill
+            className="hidden dark:block object-contain"
             alt="Reading"
           />
         </div>
