@@ -8,6 +8,7 @@ import useScrollTop from "@/hooks/use-scroll-top";
 import Logo from "./logo";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/spinner";
 
 const Navbar = () => {
   const scrolled = useScrollTop();
@@ -19,7 +20,7 @@ const Navbar = () => {
       <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
         {/* Login button */}
         { isLoading && (
-          <p>loading...</p>
+          <Spinner />
         )}
         { !isAuthenticated && !isLoading && (
           <>
