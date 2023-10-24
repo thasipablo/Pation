@@ -32,18 +32,20 @@ const Navbar = () => {
             </SignInButton>
             <SignInButton mode="modal">
               <Button size="sm">
-                Get Passion for free
+                Get Passion free
               </Button>
             </SignInButton>
           </>
         )}
         { isAuthenticated && !isLoading && (
           <>
-            <Button variant="ghost" size="sm">
+            <div>
               <Link href="/documents">
-                Enter Pation
+                <Button variant="ghost" size="sm">
+                    Enter Pation
+                </Button>
               </Link>
-            </Button>
+            </div>
             <UserButton afterSignOutUrl="/" />
           </>
         )}
