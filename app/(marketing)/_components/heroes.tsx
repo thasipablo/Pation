@@ -11,6 +11,7 @@ const Heroes = () => {
             className="dark:hidden object-contain"
             alt="Document"
           />
+          {/* dark mode image */}
           <Image
             src="/documents-dark.png"
             fill
@@ -25,6 +26,7 @@ const Heroes = () => {
             className="dark:hidden object-contain"
             alt="Reading"
           />
+          {/* dark mode image */}
           <Image
             src="/reading-dark.png"
             fill
