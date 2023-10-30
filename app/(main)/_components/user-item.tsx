@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger
  } from "@/components/ui/dropdown-menu"
 import { useUser } from "@clerk/clerk-react"
+import { ChevronsLeftRight } from "lucide-react"
 
 const UserItem = () => {
   const { user } = useUser()
@@ -28,8 +29,21 @@ const UserItem = () => {
               { user?.fullName}&apos;s Pation
             </span>
           </div>
+          <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
         </div>
       </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className="w-80"
+        align="start"
+        alignOffset={11}
+        forceMount
+      >
+        <div className="flex flex-col space-y-4 p-2">
+          <p className="text-xs font-medium">
+            { user?.emailAddresses[0].emailAddress }
+          </p>
+        </div>
+      </DropdownMenuContent>
     </DropdownMenu>
   );
 }
