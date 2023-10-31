@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
  } from "@/components/ui/dropdown-menu"
-import { useUser } from "@clerk/clerk-react"
+import { SignOutButton, useUser } from "@clerk/clerk-react"
 import { ChevronsLeftRight } from "lucide-react"
 
 const UserItem = () => {
@@ -39,10 +39,28 @@ const UserItem = () => {
         forceMount
       >
         <div className="flex flex-col space-y-4 p-2">
-          <p className="text-xs font-medium">
-            { user?.emailAddresses[0].emailAddress }
-          </p>
+          <div className="flex items-center gap-x-2">
+            <div className="rounded-md bg-secondary p-1">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src={user?.imageUrl} />
+              </Avatar>
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm line-clamp-1">
+                {user?.fullName}
+              </p>
+              <p className="text-xs font-medium text-muted-foreground">
+                { user?.emailAddresses[0].emailAddress }
+              </p>
+            </div>
+          </div>
         </div>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="w-full cursor-pointer text-muted-foreground">
+          <SignOutButton>
+            Log out
+          </SignOutButton>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
