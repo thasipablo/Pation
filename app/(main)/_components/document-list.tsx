@@ -3,11 +3,12 @@
 import { useState } from "react";
 
 import { Doc, Id } from "@/convex/_generated/dataModel"
-import { useParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useParams, useRouter } from "next/navigation";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Item from "./item";
+import { cn } from "@/lib/utils";
+import { FileIcon } from "lucide-react";
 
 interface DocumentListProps {
   parentdocumentId?: Id<"documents">;
@@ -53,9 +54,39 @@ const DocumentList = ({
   }
   
   return ( 
-    <div>
-      Document List
-    </div>
+    <>
+      <p
+        style={{ paddingLeft: level ? `${(level * 12) + 25}px` : undefined }}
+        className={cn(
+          "hidden text-sm font-meddium text-muted-foreground/80",
+          expanded && "last:block",
+          level === 0 && "hidden"
+        )}
+      >
+        No pages inside
+      </p>
+      {documents.map((document) => (
+        <div key={document._id}>
+          <Item
+            id={document._id}
+            label={document.title}
+            onClick={() => onRedirect(document._id)}
+            icon={FileIcon}
+            documentIcon={document.icon}
+            active={params.documentId === document._id}
+            level={level}
+            onExpend={() => onExpand(document._id)}
+            expanded={expanded[document._id]}
+          />
+          {expanded[document._id] && (
+            <DocumentList
+              parentdocumentId={document._id}
+              level={level + 1}
+            />
+          )}
+        </div>
+      ))}
+    </>
   );
 }
  
