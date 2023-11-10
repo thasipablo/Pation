@@ -4,6 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Id } from "@/convex/_generated/dataModel"
 import { cn } from "@/lib/utils"
 import { ChevronDown, ChevronRight, LucideIcon } from "lucide-react"
+import React from "react"
 
 interface ItemProps {
   id?: Id<"documents">
@@ -30,6 +31,11 @@ const Item = ({
   onClick,
   icon: Icon
 }: ItemProps) => {
+  const handleExpand = ( event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.stopPropagation()
+    onExpend?.()
+  }
+
   const ChevronIcon = expanded ? ChevronDown : ChevronRight
 
   return (
@@ -45,7 +51,7 @@ const Item = ({
       { !!id && (
         <div
           role="button"
-          onClick={() => {}}
+          onClick={handleExpand}
           className="h-full rounded-sm hover:bg-neutral-300 dark:bg-neutral-600 mr-1"
         >
           <ChevronIcon className="h-4 w-4 shrink-0 text-muted-foreground/50" />
